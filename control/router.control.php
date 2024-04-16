@@ -6,6 +6,7 @@ if(isset($_GET["page"])) {
             include("../view/home.view.php");
             break;
         default :
+        $title = "Page Not Found";
             include("../view/error404.view.php");
     }
 }else {
