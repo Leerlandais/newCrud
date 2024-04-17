@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,29 +11,17 @@
         <title><?=$title?></title>
     </head>
     <body>
-    <div class="container mt-2 d-flex flex-column align-items-center">
-        <div class="row">
-            <div class="col text-center">
+        <div class="container mt-2">
         <?php
-        if (isset($errorMessage)) : echo $errorMessage; endif;
-        include("inc/header.php");
+            include("inc/header.php")
         ?>
-                <h1 class="mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap</h1>
-                <h3>Connectez-vous pour continuer</h3>
-            </div>    
-            <?php
-            if(!isset($_SESSION['monID']) || 
-            $_SESSION['monID']!== session_id())
-            {
-                include("inc/login.php");
-            }
-            ?>
-
-        <?php
-            include("inc/footer.php");
-        ?>
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="mt-5">Accès Refusé</h1>
+                    <h3>Désolé, <?=$_SESSION["name"]?>, vous ne disposez pas des autorisations nécessaires pour accéder à cette page.</h3>
+                </div>
+            </div>
         </div>
-    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

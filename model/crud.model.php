@@ -36,7 +36,9 @@ function getUserLogin ($db, $user) {
 function checkUserLogin ($db, $user, $pwd) {
     $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
         if ($user["user_pwd"] === $cleanedPWD) {
-            var_dump($user, $user, $user);
+            $_SESSION['monID'] = session_id();
+            $_SESSION['name'] = $user["user_name"];
+            $_SESSION["level"] = $user['user_lvl'];
         }
     
 }

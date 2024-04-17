@@ -1,3 +1,10 @@
+<?php
+    if (!isset($_SESSION["level"]) || $_SESSION["level"] < 8) {
+        header ("Location: ?p=refuse");
+        exit();
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +21,9 @@
         <?php
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
+        echo ($_SESSION["name"]);
         ?>
-        <h1 class="mt-5">Les Articles</h1>
+        <h1 class="mt-5">Ajouter un Article</h1>
         <?php
             if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
             {

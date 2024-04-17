@@ -12,7 +12,15 @@ if(isset($_GET["p"])) {
             case "read" : 
                 $title = "Read Articles";
                 include("../view/articles.view.php");
-                break;            
+                break;    
+            case "refuse" : 
+                $title = "Access Denied";
+                include("../view/refuse.view.php");
+                break;   
+            case "add_art" : 
+                $title = "Add an Article";
+                include("../view/addArticles.view.php");
+                break;                            
                 default :
                 $title = "Page Not Found";
                 include("../view/error404.view.php");
@@ -23,7 +31,9 @@ if(isset($_GET["p"])) {
             include("../view/home.view.php");
         }
         
-        
+        if (isset($_GET['sect']) && $_GET["sect"] === "logout") {
+            include ("../model/logout.model.php");
+        } 
         
         
         if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {

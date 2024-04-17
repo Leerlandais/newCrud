@@ -12,7 +12,7 @@
           <a class="nav-link" href="?p=read">Read Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?p=home&sect=art">Add Articles</a>
+          <a class="nav-link" href="?p=add_art">Add Articles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="?p=home&sect=cont_arts">Control Articles</a>
