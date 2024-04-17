@@ -17,7 +17,7 @@ function getUsers(PDO $db) {
 
 }
 
-function getUserLogin ($db, $user) {
+function getUserLogin (PDO $db, $user) {
     $cleanedUser = htmlspecialchars(strip_tags(trim($user)), ENT_QUOTES);
 
     $sql = "SELECT * from `users`
@@ -33,7 +33,7 @@ function getUserLogin ($db, $user) {
     }
 }
 
-function checkUserLogin ($db, $user, $pwd) {
+function checkUserLogin (PDO $db, $user, $pwd) {
     $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
         if ($user["user_pwd"] === $cleanedPWD) {
             $_SESSION['monID'] = session_id();
@@ -41,4 +41,21 @@ function checkUserLogin ($db, $user, $pwd) {
             $_SESSION["level"] = $user['user_lvl'];
         }
     
+}
+
+function getAllArts(PDO $db, $status) {
+        
+    $sql = "SELECT * 
+            FROM `articles`
+            WHERE `art_status` = $status";
+    
+    try{
+        $query = $db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }catch(Exception) {
+        $errorMessage = "Sorry, couldn't get articles";
+        return $errorMessage;
+    }
+
 }

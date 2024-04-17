@@ -15,14 +15,27 @@
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
         ?>
-        <h1 class="mt-5">Les Articles</h1>
+        <p class="h1 mt-5">Les Articles</p>
         <?php
             if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
             {
                 echo "hi Boss";
-            }
-        
+            }        
         ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <?php
+            if (is_array($readableArts)) {
+                foreach ($readableArts as $arts) {
+                    var_dump($arts["art_title"]);
+                    // show articles here
+                }
+            }else {
+                echo $readableArts;
+            }
+            ?>
         </div>
     </div>
 </div>

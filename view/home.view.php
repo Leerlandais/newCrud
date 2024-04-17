@@ -15,8 +15,9 @@
         if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
         ?>
-                <h1 class="mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap</h1>
-                <h3>Connectez-vous pour continuer</h3>
+                <p class="h1 mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap<p>
+                <p class="h3">Connectez-vous pour continuer</p>
+                <p class="h5">ou cliquez <a href="?p=read">ici</a> pour lire les articles</p>
             </div>    
             <?php
             if(!isset($_SESSION['monID']) || 

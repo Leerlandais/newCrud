@@ -1,5 +1,5 @@
 <?php
-    if (!isset($_SESSION["level"]) || $_SESSION["level"] < 2) {
+    if (!isset($_SESSION["level"]) || $_SESSION["level"] < 8) {
         header ("Location: ?p=refuse");
         exit();
     }
@@ -23,7 +23,7 @@
         include("inc/header.php");
         echo ($_SESSION["name"]);
         ?>
-        <p class="h1 mt-5">Ajouter un Article</p>
+        <p class="h1 mt-5">Control Utilisateurs</p>
         <?php
             if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
             {

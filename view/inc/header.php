@@ -15,10 +15,10 @@
           <a class="nav-link" href="?p=add_art">Add Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?p=home&sect=cont_arts">Control Articles</a>
+          <a class="nav-link" href="?p=cont_arts">Control Articles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?p=home&sect=cont_user" aria-disabled="true">Control Users</a>
+          <a class="nav-link" href="?p=cont_user" aria-disabled="true">Control Users</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="?p=home&sect=logout" aria-disabled="true">Déconnexion</a>

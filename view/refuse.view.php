@@ -17,8 +17,8 @@
         ?>
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="mt-5">Accès Refusé</h1>
-                    <h3>Désolé, <?=$_SESSION["name"]?>, vous ne disposez pas des autorisations nécessaires pour accéder à cette page.</h3>
+                    <p class="h1 mt-5">Accès Refusé</p>
+                    <p class="h3">Désolé, <?=$_SESSION["name"]?>, vous ne disposez pas des autorisations nécessaires pour accéder à cette page.</h3>
                 </div>
             </div>
         </div>

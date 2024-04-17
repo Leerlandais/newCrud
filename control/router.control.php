@@ -2,6 +2,10 @@
 
 $getUse = getUsers($db);
 
+if(isset($_GET["p"]) && $_GET["p"] === "read") {
+    $status = 2;
+        $readableArts = getAllArts($db, $status);
+}
 if(isset($_GET["p"])) {
     
     switch($_GET["p"]) {
@@ -13,27 +17,35 @@ if(isset($_GET["p"])) {
                 $title = "Read Articles";
                 include("../view/articles.view.php");
                 break;    
-            case "refuse" : 
-                $title = "Access Denied";
-                include("../view/refuse.view.php");
-                break;   
-            case "add_art" : 
-                $title = "Add an Article";
-                include("../view/addArticles.view.php");
-                break;                            
-                default :
-                $title = "Page Not Found";
-                include("../view/error404.view.php");
-                break;
-            }
-        }else {
-            $title = "Welcome via else";
-            include("../view/home.view.php");
-        }
-        
-        if (isset($_GET['sect']) && $_GET["sect"] === "logout") {
-            include ("../model/logout.model.php");
-        } 
+                case "refuse" : 
+                    $title = "Access Denied";
+                    include("../view/refuse.view.php");
+                    break;   
+                    case "add_art" : 
+                        $title = "Add an Article";
+                        include("../view/addArticles.view.php");
+                        break;
+                        case "cont_arts" : 
+                            $title = "Control Articles";
+                            include("../view/controlArticles.view.php");
+                            break;   
+                            case "cont_user" : 
+                                $title = "Control Users";
+                                include("../view/controlUsers.view.php");
+                                break;                                              
+                                default :
+                                $title = "Page Not Found";
+                                include("../view/error404.view.php");
+                                break;
+                            }
+                        }else {
+                            $title = "Welcome via else";
+                            include("../view/home.view.php");
+                        }
+                        
+                        if (isset($_GET['sect']) && $_GET["sect"] === "logout") {
+                            include ("../model/logout.model.php");
+                        } 
         
         
         if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {
@@ -45,4 +57,4 @@ if(isset($_GET["p"])) {
           checkUserLogin($db, $userLogin, $_POST["userPassInp"]);
           
         }
-            
+        

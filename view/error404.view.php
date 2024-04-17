@@ -17,8 +17,8 @@
         ?>
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="mt-5">Page Introuvable</h1>
-                    <h3>Soit vous avez modifié l'URL, soit je n'ai tout simplement pas encore terminé cette page.</h3>
+                    <p class="h1 mt-5">Page Introuvable</p>
+                    <p class="h3">Soit vous avez modifié l'URL, soit je n'ai tout simplement pas encore terminé cette page.</p>
                 </div>
             </div>
         </div>
