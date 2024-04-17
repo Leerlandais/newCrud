@@ -51,7 +51,7 @@ if(isset($_GET["p"])) {
         if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {
           $userLogin = getUserLogin($db, $_POST["userNameInp"]);
           if (!is_array($userLogin)) {
-                var_dump($userLogin);
+                echo "Enter you details correctly";
                 return;
           }
           checkUserLogin($db, $userLogin, $_POST["userPassInp"]);

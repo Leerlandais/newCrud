@@ -27,9 +27,9 @@ function getUserLogin (PDO $db, $user) {
                 $query = $db->query($sql);
                 $result = $query->fetch();
                 return $result;
-            } catch (Exception $e) {
-                error_log("Error adding User: " . $e->getMessage());
-                return $e;
+            } catch (Exception) {
+                $errorMessage = "Sorry, couldn't get users (login check)";
+                return $errorMessage;
     }
 }
 
@@ -39,6 +39,7 @@ function checkUserLogin (PDO $db, $user, $pwd) {
             $_SESSION['monID'] = session_id();
             $_SESSION['name'] = $user["user_name"];
             $_SESSION["level"] = $user['user_lvl'];
+            return true;
         }
     
 }
