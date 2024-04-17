@@ -8,7 +8,7 @@
         <title><?=$title?></title>
     </head>
     <body>
-    <div class="container mt-2">
+    <div class="container mt-2 d-flex flex-column align-items-center">
         <div class="row">
             <div class="col text-center">
         <?php
@@ -19,7 +19,19 @@
                 <h3>Connectez-vous pour continuer</h3>
             </div>    
         </div>
-            
+            <div class="row w-25">
+            <form class="d-flex flex-column align-items-center justify-content-center" method="POST" action="./">
+                 <div class="form-group">
+                   <label for="nomInp">Nom</label>
+                   <input type="text" class="form-control" name="userNameInp" id="nomInp" aria-describedby="emailHelp" placeholder="Votre Nom">
+                 </div>
+                 <div class="form-group">
+                   <label for="pwdInp">Password</label>
+                   <input type="password" class="form-control" name="userPassInp" id="pwdInp" placeholder="Password">
+                 </div>
+                 <button type="submit" class="btn btn-dark mt-1">Submit</button>
+                </form>
+            </div>
 
         <?php
             include("inc/footer.php");
