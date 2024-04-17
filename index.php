@@ -1,3 +1,3 @@
 <?php
-header("Location: control");
+header("Location: public");
 die;

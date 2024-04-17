@@ -1,9 +1,3 @@
-<?php
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,17 +8,24 @@
         <title><?=$title?></title>
     </head>
     <body>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col text-center">
         <?php
         if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
         ?>
-                <h1>Bienvenue dans ma nouvelle expérience CRUD et Bootstrap</h1>
-                
+                <h1 class="mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap</h1>
+                <h3>Connectez-vous pour continuer</h3>
+            </div>    
+        </div>
+            
 
-
-<?php   
-
-?>
+        <?php
+            include("inc/footer.php");
+        ?>
+        </div>
+    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
