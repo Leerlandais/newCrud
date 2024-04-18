@@ -23,7 +23,7 @@
         include("inc/header.php");
     
         ?>
-        <p class="h1 mt-5">Articles à verifier</p>
+        <p class="h1 mt-5">Contrôler les Articles</p>
         <?php
             if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
             {
@@ -33,24 +33,45 @@
         ?>
         </div>
     </div>
-    <div class="row gx-5 mt-5">
-            <?php
-            if (is_array($controlArts)) {
-                foreach ($controlArts as $arts) { ?>
-                    <div class="col-md-6 mb-4">
-                      <h4><strong><?=$arts["art_title"]?></strong></h4>
-                      <p class="text-muted ps-3">
+        <div class="row d-flex flex-row text-center">
+            <div class="col border border-success-subtle px-5 d-flex flex-column align-items-center">
+                <p class="h3 mb-4">Articles Publié</p>
+                <?php
+                if (is_array($readableArts)) {
+                foreach ($readableArts as $arts) { ?>
+                    
+                    <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
+                    <p class="text-muted ps-3">
                         <?=$arts["art_content"] ?>
-                      </p>
-                    </div>
-                  </div>
-                  <?php
+                    </p>
+                    
+                    
+                    <?php
                 }
             }else {
                 echo $readableArts;
             }
             ?>
-</div>
+            </div>
+            <div class="col border border-success-subtle px-5 d-flex flex-column align-items-center">
+                <p class="h3 mb-4">Articles à Verifer</p>
+                <?php
+            if (is_array($controlArts)) {
+                foreach ($controlArts as $arts) { ?>
+                    <div class="col-md-6 mb-4">
+                        <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
+                        <p class="text-muted ps-3">
+                            <?=$arts["art_content"] ?>
+                        </p>
+                    </div>
+                </div>
+                <?php
+                }
+            }
+            ?>
+            </div>
+        </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
