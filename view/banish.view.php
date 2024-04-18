@@ -17,8 +17,8 @@
         ?>
             <div class="row">
                 <div class="col text-center">
-                    <p class="h1 mt-5">Page Introuvable</p>
-                    <p class="h3">Soit vous avez modifié l'URL, soit je n'ai tout simplement pas encore terminé cette page. &lpar;Ce dont je doute fortement&rpar;</p>
+                    <p class="h1 mt-5">Page inaccessible</p>
+                    <p class="h3">Votre accès a été gelé. Vous pouvez revenir dans...&lpar;add time until unlock &lpar;once that's added, of course&rpar;&rpar;</p>
                 </div>
             </div>
         </div>

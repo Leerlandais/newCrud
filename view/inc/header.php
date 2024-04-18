@@ -8,9 +8,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="?p=home">Accueil</a>
         </li>
+        <?php if((isset($_GET["p"])) && $_GET["p"] != "read") { ?>
+          <?php 
+              if(isset($_SESSION["level"]) && $_SESSION["level"] !== 0) {
+          ?>
         <li class="nav-item">
           <a class="nav-link" href="?p=read">Read Articles</a>
         </li>
+        <?php } }?>
         <li class="nav-item">
           <?php 
               if(isset($_SESSION["level"]) && $_SESSION["level"] > 1) {
@@ -40,6 +45,7 @@
         ?>
         <li class="nav-item">
           <?php 
+          
               if(isset($_SESSION['monID']) && $_SESSION['monID'] === session_id()) {
           ?>
           <a class="nav-link" href="?p=home&sect=logout" aria-disabled="true">Déconnexion</a>

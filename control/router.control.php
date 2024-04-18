@@ -49,7 +49,11 @@ if(isset($_GET["p"])) {
                                     case "make_login" : 
                                         $title = "Création d'utilisateur";
                                         include("../view/home.view.php");
-                                        break;                                                                                   
+                                        break;
+                                        case "banish" : 
+                                            $title = "Go Away";
+                                            include("../view/banish.view.php");
+                                            break;                                                                                                                              
                                 default :
                                 $title = "Page Not Found";
                                 include("../view/error404.view.php");
@@ -74,6 +78,9 @@ if(isset($_GET["p"])) {
           $userLogin = getUserLogin($db, $_POST["userNameInp"], $_POST["userPassInp"]);
           if (!is_bool($userLogin)) {
             echo $userLogin;
+          }else if ($_SESSION["level"] === 0) {
+            header ("Location: ?p=banish");
+            die();
           }else {
             header ("Location: ?p=welcome");
           }
@@ -83,7 +90,7 @@ if(isset($_GET["p"])) {
         }
 
         if(isset($_POST["createNameInp"]) && isset($_POST["createPassInp"]) && isset($_POST["createPassInpCheck"])) {
-            if($_POST["createNameInp"] == "" || $_POST["createPassInp"] == "" || $_POST["createPassInpCheck"]== "") {
+            if($_POST["createNameInp"] == "" || $_POST["createPassInp"] == "" || $_POST["createPassInpCheck"] == "") {
                 echo "Saisissez correctement vos coordonnées!";
                 return;
             }else if ($_POST["createPassInp"] !== $_POST["createPassInpCheck"]) {

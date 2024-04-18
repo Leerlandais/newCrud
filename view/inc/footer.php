@@ -1,13 +1,8 @@
-<div class="row mt-5">
-            <div class="col">
-                <ul class="list-group">
-                <?php
-                    foreach($getUse as $user) {
-                        ?>
-                    <li class="list-group-item bg-transparent border-0"><?=$user['nom']?></li>
 
-                <?php
-                }
-                ?>
+<div class="container mt-5 d-flex flex-column align-items-center">
+<div class="row mt-5">
+            <div class="col mt-5 d-flex justify-content-center">
+                <p class="h5">&copy;<a href="https://www.leerlandais.com" target="_blank">Leerlandais 2024</a></p>
                 </ul>
             </div>
+</div>
