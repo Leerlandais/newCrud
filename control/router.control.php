@@ -62,7 +62,7 @@ if(isset($_GET["p"])) {
           if (!is_bool($userLogin)) {
             echo $userLogin;
           }else {
-            header ("Location: ../public?p=welcome");
+            header ("Location: ?p=welcome");
           }
           
    //       checkUserLogin($userLogin, $_POST["userPassInp"]);
