@@ -12,17 +12,41 @@
           <a class="nav-link" href="?p=read">Read Articles</a>
         </li>
         <li class="nav-item">
+          <?php 
+              if(isset($_SESSION["level"]) && $_SESSION["level"] > 1) {
+          ?>
           <a class="nav-link" href="?p=add_art">Add Articles</a>
         </li>
+        <?php
+        }
+        ?>
         <li class="nav-item">
+          <?php 
+              if(isset($_SESSION["level"]) && $_SESSION["level"] > 2) {
+          ?>
           <a class="nav-link" href="?p=cont_arts">Control Articles</a>
         </li>
+        <?php
+        }
+        ?>
         <li class="nav-item">
+          <?php 
+              if(isset($_SESSION["level"]) && $_SESSION["level"] > 7) {
+          ?>
           <a class="nav-link" href="?p=cont_user" aria-disabled="true">Control Users</a>
         </li>
+        <?php
+        }
+        ?>
         <li class="nav-item">
+          <?php 
+              if(isset($_SESSION['monID']) && $_SESSION['monID'] === session_id()) {
+          ?>
           <a class="nav-link" href="?p=home&sect=logout" aria-disabled="true">Déconnexion</a>
         </li>
+        <?php
+        }
+        ?>
       </ul>
     </div>
   </nav>
