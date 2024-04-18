@@ -32,7 +32,11 @@ if(isset($_GET["p"])) {
                             case "cont_user" : 
                                 $title = "Control Users";
                                 include("../view/controlUsers.view.php");
-                                break;                                              
+                                break;    
+                                case "welcome" : 
+                                    $title = "Bienvenue";
+                                    include("../view/welcome.view.php");
+                                    break;                                             
                                 default :
                                 $title = "Page Not Found";
                                 include("../view/error404.view.php");
@@ -49,12 +53,19 @@ if(isset($_GET["p"])) {
         
         
         if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {
-          $userLogin = getUserLogin($db, $_POST["userNameInp"]);
-          if (!is_array($userLogin)) {
-                echo "Enter you details correctly";
+            if($_POST["userNameInp"] == "" || $_POST["userPassInp"] == "") {
+                echo "Enter you details correctly!";
                 return;
+
+            }
+          $userLogin = getUserLogin($db, $_POST["userNameInp"], $_POST["userPassInp"]);
+          if (!is_bool($userLogin)) {
+            echo $userLogin;
+          }else {
+            header ("Location: ../public?p=welcome");
           }
-          checkUserLogin($db, $userLogin, $_POST["userPassInp"]);
+          
+   //       checkUserLogin($userLogin, $_POST["userPassInp"]);
           
         }
         

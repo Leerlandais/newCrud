@@ -23,6 +23,7 @@
             if(!isset($_SESSION['monID']) || 
             $_SESSION['monID']!== session_id())
             {
+                echo $_SESSION["name"];
                 include("inc/login.php");
             }
             ?>
