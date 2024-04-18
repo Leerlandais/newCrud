@@ -18,14 +18,16 @@
                 <p class="h1 mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap<p>
                 <p class="h3">Connectez-vous pour continuer</p>
                 <p class="h5">ou cliquez <a href="?p=read">ici</a> pour lire les articles</p>
-            </div>    
-            <?php
-            if(!isset($_SESSION['monID']) || 
+                <?php
+                if (isset($_GET["p"]) && $_GET["p"] === "make_login") {
+                    include("inc/makeUser.php");
+                }else if(!isset($_SESSION['monID']) || 
             $_SESSION['monID']!== session_id())
             {
                 include("inc/login.php");
             }
             ?>
+            </div>    
 
         <?php
             include("inc/footer.php");

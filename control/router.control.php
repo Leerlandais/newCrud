@@ -45,7 +45,11 @@ if(isset($_GET["p"])) {
                                 case "welcome" : 
                                     $title = "Bienvenue";
                                     include("../view/welcome.view.php");
-                                    break;                                             
+                                    break;   
+                                    case "make_login" : 
+                                        $title = "Création d'utilisateur";
+                                        include("../view/home.view.php");
+                                        break;                                                                                   
                                 default :
                                 $title = "Page Not Found";
                                 include("../view/error404.view.php");
@@ -63,7 +67,7 @@ if(isset($_GET["p"])) {
         
         if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {
             if($_POST["userNameInp"] == "" || $_POST["userPassInp"] == "") {
-                echo "Enter you details correctly!";
+                echo "Saisissez correctement vos coordonnées!";
                 return;
 
             }
@@ -77,4 +81,17 @@ if(isset($_GET["p"])) {
    //       checkUserLogin($userLogin, $_POST["userPassInp"]);
           
         }
+
+        if(isset($_POST["createNameInp"]) && isset($_POST["createPassInp"]) && isset($_POST["createPassInpCheck"])) {
+            if($_POST["createNameInp"] == "" || $_POST["createPassInp"] == "" || $_POST["createPassInpCheck"]== "") {
+                echo "Saisissez correctement vos coordonnées!";
+                return;
+            }else if ($_POST["createPassInp"] !== $_POST["createPassInpCheck"]) {
+                echo "Vos mots de passe ne correspondent pas!";
+                return;
+            }else {
+            $createLogin = createNewUser($db, $_POST["createNameInp"], $_POST["createPassInp"]);
+        }
+        }
+        
         

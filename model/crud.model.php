@@ -87,3 +87,9 @@ if (is_bool($result)){
     }
 
 }
+
+function createNewUser(PDO $db, $name, $pwd) {
+    $cleanedName = htmlspecialchars(strip_tags(trim($name)), ENT_QUOTES);
+    $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
+    var_dump($cleanedName,$cleanedPWD);
+}
