@@ -15,7 +15,7 @@
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
         ?>
-        <p class="h1 mt-5">Les Articles</p>
+        <p class="h1 my-5">Les Articles</p>
         <?php
             if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
             {
@@ -24,20 +24,26 @@
         ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+
+    <div class="row gx-5 mt-5">
             <?php
             if (is_array($readableArts)) {
-                foreach ($readableArts as $arts) {
-                    var_dump($arts["art_title"]);
-                    // show articles here
+                foreach ($readableArts as $arts) { ?>
+                    <div class="col-md-6 mb-4">
+                      <h4><strong><?=$arts["art_title"]?></strong></h4>
+                      <p class="text-muted ps-3">
+                        <?=$arts["art_content"] ?>
+                      </p>
+                    </div>
+                  </div>
+                  <?php
                 }
             }else {
                 echo $readableArts;
             }
             ?>
-        </div>
-    </div>
+
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

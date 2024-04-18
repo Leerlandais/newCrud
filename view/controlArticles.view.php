@@ -21,7 +21,7 @@
         <?php
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
-        echo ($_SESSION["name"]);
+    
         ?>
         <p class="h1 mt-5">Articles à verifier</p>
         <?php
@@ -33,6 +33,23 @@
         ?>
         </div>
     </div>
+    <div class="row gx-5 mt-5">
+            <?php
+            if (is_array($controlArts)) {
+                foreach ($controlArts as $arts) { ?>
+                    <div class="col-md-6 mb-4">
+                      <h4><strong><?=$arts["art_title"]?></strong></h4>
+                      <p class="text-muted ps-3">
+                        <?=$arts["art_content"] ?>
+                      </p>
+                    </div>
+                  </div>
+                  <?php
+                }
+            }else {
+                echo $readableArts;
+            }
+            ?>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

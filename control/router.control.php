@@ -6,6 +6,13 @@ if(isset($_GET["p"]) && $_GET["p"] === "read") {
     $status = 2;
         $readableArts = getAllArts($db, $status);
 }
+
+if(isset($_GET["p"]) && $_GET["p"] === "cont_arts") {
+    $status = 0;
+        $controlArts = getAllArts($db, $status);
+}
+
+
 if(isset($_GET["p"])) {
     
     switch($_GET["p"]) {
