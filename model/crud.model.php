@@ -9,6 +9,7 @@ function getUsers(PDO $db) {
     try{
         $query = $db->query($sql);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->closeCursor();
         return $result;
     }catch(Exception) {
         $errorMessage = "Sorry, couldn't get user info";
@@ -54,6 +55,7 @@ function getAllArts(PDO $db, $status) {
     try{
         $query = $db->query($sql);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->closeCursor();
         return $result;
     }catch(Exception) {
         $errorMessage = "Sorry, couldn't get articles";
@@ -78,6 +80,7 @@ if (is_bool($result)){
             $_SESSION['monID'] = session_id();
             $_SESSION['name'] = $result["user_name"];
             $_SESSION["level"] = $result['user_lvl'];
+            $query->closeCursor();
             return true;
         }else {
             
@@ -91,5 +94,21 @@ if (is_bool($result)){
 function createNewUser(PDO $db, $name, $pwd) {
     $cleanedName = htmlspecialchars(strip_tags(trim($name)), ENT_QUOTES);
     $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
-    var_dump($cleanedName,$cleanedPWD);
+    // var_dump($cleanedName,$cleanedPWD);
+
+
+
+    $sql = "INSERT INTO `users`(`user_name`, `user_pwd`, `user_lvl`) VALUES (?,?,'2')";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(1, $cleanedName);
+    $stmt->bindValue(2, $cleanedPWD);
+
+    try{
+        $stmt->execute();
+        return true;
+
+    }catch(Exception){
+        $errorMessage = "Couldn't create user";
+        return $errorMessage;
+    }
 }
