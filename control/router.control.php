@@ -69,7 +69,7 @@ if(isset($_GET["p"])) {
                         } 
         
         
-        if(isset($_POST["userNameInp"]) && isset($_POST["userPassInp"])) {
+        if(isset($_POST["userNameInp"], $_POST["userPassInp"])) {
             if($_POST["userNameInp"] == "" || $_POST["userPassInp"] == "") {
                 echo "Saisissez correctement vos coordonnées!";
                 return;
@@ -89,7 +89,7 @@ if(isset($_GET["p"])) {
           
         }
 
-        if(isset($_POST["createNameInp"]) && isset($_POST["createPassInp"]) && isset($_POST["createPassInpCheck"])) {
+        if(isset($_POST["createNameInp"], $_POST["createPassInp"], $_POST["createPassInpCheck"])) {
             if($_POST["createNameInp"] == "" || $_POST["createPassInp"] == "" || $_POST["createPassInpCheck"] == "") {
                 echo "Saisissez correctement vos coordonnées!";
                 return;
@@ -100,5 +100,13 @@ if(isset($_GET["p"])) {
             $createLogin = createNewUser($db, $_POST["createNameInp"], $_POST["createPassInp"]);
         }
         }
+/* Change to POST
+
+        if(isset($_GET["publish"]) || isset($_GET["unpublish"])) {
+            isset($_GET["publish"]) ? $changeThis = $_GET["publish"] : $changeThis = $_GET["unpublish"];
+            isset($_GET["publish"]) ? $changeVal = "+2" : $changeVal = "-2";
+                changeArticleStatus($db, $changeThis, $changeVal);
+                header("Refresh:0; ?p=cont_arts");
+        }
         
-        
+        */

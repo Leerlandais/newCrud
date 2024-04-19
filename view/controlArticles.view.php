@@ -39,11 +39,10 @@
                 <?php
                 if (is_array($readableArts)) {
                 foreach ($readableArts as $arts) { ?>
-                    
+                    <div class="col d-flex flex-row">
                     <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
-                    <p class="text-muted ps-3">
-                        <?=$arts["art_content"] ?>
-                    </p>
+                    <a href="?p=cont_arts&unpublish=<?=$arts["art_id"]?>" class="ps-1 align-self-center">Masquer</a>
+                    </div>
                     
                     
                     <?php
@@ -56,19 +55,25 @@
             <div class="col border border-success-subtle px-5 d-flex flex-column align-items-center">
                 <p class="h3 mb-4">Articles à Verifer</p>
                 <?php
+
+/* CHANGE LINKS TO BUTTONS AND USE POST METHOD */
+
             if (is_array($controlArts)) {
                 foreach ($controlArts as $arts) { ?>
-                    <div class="col-md-6 mb-4">
+                    <div class="col mb-4 d-flex flex-col">
+                        <div>
                         <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
                         <p class="text-muted ps-3">
                             <?=$arts["art_content"] ?>
                         </p>
-                    </div>
-                </div>
-                <?php
+                        </div>
+                        <a href="?p=cont_arts&publish=<?=$arts["art_id"]?>" class="ps-3 align-self-center">Publier</a>
+                        <?php
                 }
             }
             ?>
+            </div>
+        </div>
             </div>
         </div>
         <?php
