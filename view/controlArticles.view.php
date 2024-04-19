@@ -39,11 +39,13 @@
                 <?php
                 if (is_array($readableArts)) {
                 foreach ($readableArts as $arts) { ?>
-                    <div class="col d-flex flex-row">
+                <form action="./" method="POST">
+                    <div class="col d-flex flex-row border border-1 border-primary-subtle rounded-5 px-2 py-1 mb-2">
+
                     <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
-                    <a href="?p=cont_arts&unpublish=<?=$arts["art_id"]?>" class="ps-1 align-self-center">Masquer</a>
+                    <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="unpublish">Masquer</button>
                     </div>
-                    
+                    </form>
                     
                     <?php
                 }
@@ -52,6 +54,7 @@
             }
             ?>
             </div>
+            
             <div class="col border border-success-subtle px-5 d-flex flex-column align-items-center">
                 <p class="h3 mb-4">Articles à Verifer</p>
                 <?php
@@ -60,14 +63,18 @@
 
             if (is_array($controlArts)) {
                 foreach ($controlArts as $arts) { ?>
-                    <div class="col mb-4 d-flex flex-col">
-                        <div>
-                        <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
-                        <p class="text-muted ps-3">
-                            <?=$arts["art_content"] ?>
+                <form action="./" method="POST">
+                    <div class="row mb-4 d-flex flex-row border border-1 border-primary-subtle rounded-5 px-2 py-1">
+                        <div class="col px-2 py-1 mb-2">
+
+                            <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
+                        <p class="text-muted ps-1"><?=$arts["art_content"] ?>
                         </p>
                         </div>
-                        <a href="?p=cont_arts&publish=<?=$arts["art_id"]?>" class="ps-3 align-self-center">Publier</a>
+                        <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="publish">Publier</button>
+                        <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="abolish">Effacer</button>
+                        </div>
+                        </form>
                         <?php
                 }
             }

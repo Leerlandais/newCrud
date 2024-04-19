@@ -109,4 +109,14 @@ if(isset($_GET["p"])) {
                 header("Refresh:0; ?p=cont_arts");
         }
         
+
+
+
+
+--------- THIS BIT - CHECK IF YOU CAN $_POST THE NEW FORMS ON CONT_USER
+
+
+
         */
+
+
