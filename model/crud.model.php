@@ -46,6 +46,7 @@ function checkUserLogin ($user, $pwd) {
 }
 
 */
+/*
 function getAllArts(PDO $db, $status) {
         
     $sql = "SELECT * 
@@ -63,7 +64,26 @@ function getAllArts(PDO $db, $status) {
     }
 
 }
+*/
+function getAllArts(PDO $db, $status) {
+    $cleanedStat = htmlspecialchars(strip_tags(trim($status)), ENT_QUOTES);
+    $sql = "SELECT * 
+            FROM `articles`
+            WHERE `art_status` = ?";
+    
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(1, $cleanedStat);
+    try{
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $result;
+    }catch(Exception) {
+        $errorMessage = "Sorry, couldn't get articles";
+        return $errorMessage;
+    }
 
+}
 function getUserLogin (PDO $db, $user, $pwd) {
     $cleanedUser = htmlspecialchars(strip_tags(trim($user)), ENT_QUOTES);
     $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
@@ -112,3 +132,5 @@ function createNewUser(PDO $db, $name, $pwd) {
         return $errorMessage;
     }
 }
+
+
