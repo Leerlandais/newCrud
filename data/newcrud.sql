@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 16, 2024 at 04:05 PM
+-- Generation Time: Apr 19, 2024 at 05:13 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `newcrud`
 --
-CREATE DATABASE IF NOT EXISTS `newcrud` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `newcrud`;
 
 -- --------------------------------------------------------
 
@@ -64,8 +62,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_pwd` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
   `user_lvl` tinyint UNSIGNED NOT NULL COMMENT '0 -> banished\r\n1 -> read only\r\n2 -> read and add\r\n3 -> read, add and publish\r\n8 -> full admin',
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `user_name` (`user_name`),
+  UNIQUE KEY `user_name_2` (`user_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -76,7 +75,9 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_pwd`, `user_lvl`) VALUES
 (2, 'manager', '123', 3),
 (3, 'writer', '123', 2),
 (4, 'reader', '123', 1),
-(5, 'banish', '123', 0);
+(5, 'banish', '123', 0),
+(6, 'Lee', '123', 3),
+(7, 'test', '123', 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
