@@ -37,44 +37,38 @@ function getAllArts(PDO $db, $status) {
     }
 
 }
-function getUserLogin (PDO $db, $user, $pwd) {
+function getUserLogin(PDO $db, $user, $pwd) {
     $cleanedUser = htmlspecialchars(strip_tags(trim($user)), ENT_QUOTES);
-    $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
-    $sql = "SELECT * from `users`
-            WHERE `user_name` = '$cleanedUser'";
+  //  $cryptPWD = password_hash($pwd,PASSWORD_DEFAULT);                 TOOK AGES TO REALISE THAT I DIDN'T NEED TO HASH THE INPUT!!!!
+    $sql = "SELECT * FROM `users` WHERE `user_name` = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(1, $cleanedUser);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $query = $db->query($sql);
-        $result = $query->fetch();
-if (is_bool($result)){
+    if (!$result) {
         $errorMessage = "Sorry, couldn't find that user";
         return $errorMessage;
     }
-        if ($result["user_pwd"] === $cleanedPWD) {
-            $_SESSION['monID'] = session_id();
-            $_SESSION['name'] = $result["user_name"];
-            $_SESSION["level"] = $result['user_lvl'];
-            $query->closeCursor();
-            return true;
-        }else {
-            
+
+    if (password_verify($pwd, $result['user_pwd'])) {
+        $_SESSION['monID'] = session_id();
+        $_SESSION['name'] = $result["user_name"];
+        $_SESSION["level"] = $result['user_lvl'];
+        return true;
+    } else {
         $errorMessage = "Incorrect Password";
         return $errorMessage;
-
     }
-
 }
 
 function createNewUser(PDO $db, $name, $pwd) {
     $cleanedName = htmlspecialchars(strip_tags(trim($name)), ENT_QUOTES);
-    $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
-    // var_dump($cleanedName,$cleanedPWD);
-
-
-
+    $cryptPWD = password_hash($pwd,PASSWORD_DEFAULT);
     $sql = "INSERT INTO `users`(`user_name`, `user_pwd`, `user_lvl`) VALUES (?,?,'2')";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(1, $cleanedName);
-    $stmt->bindValue(2, $cleanedPWD);
+    $stmt->bindValue(2, $cryptPWD);
 
     try{
         $stmt->execute();
