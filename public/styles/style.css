@@ -6,3 +6,8 @@ background: -webkit-linear-gradient(-90deg, hsla(197, 14%, 57%, 1) 0%, hsla(192,
 background-repeat: repeat-x;
 height: 150vh;
 }
+
+.littleImg {
+    width: 25px;
+    height: 25px;
+}

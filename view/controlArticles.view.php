@@ -24,13 +24,7 @@
     
         ?>
         <p class="h1 mt-5">Contrôler les Articles</p>
-        <?php
-            if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
-            {
-                echo "hi Boss";
-            }
-        
-        ?>
+
         </div>
     </div>
         <div class="row d-flex flex-row text-center">
@@ -43,7 +37,7 @@
                     <div class="col d-flex flex-row border border-1 border-primary-subtle rounded-5 px-2 py-1 mb-2">
                         <input type="hidden" name="artID" value="<?=$arts["art_id"]?>"> 
                     <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
-                    <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="unpublish">Masquer</button>
+                    <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3 border-info" type="submit" name="unpublish">Masquer</button>
                     </div>
                     </form>
                     
@@ -71,8 +65,9 @@
                         <p class="text-muted ps-1"><?=$arts["art_content"] ?>
                         </p>
                         </div>
-                        <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="publish">Publier</button>
-                    <!--    <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="abolish">Effacer</button>  -->
+                
+                        <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3 border-info" type="submit" name="publish">Publier</button>                
+                        <button class="badge bg-dark text-danger btn-sm h-auto w-auto align-self-center ms-3 border-warning" type="submit" name="abolish">Effacer</button>  
                         </div>
                         </form>
                         <?php

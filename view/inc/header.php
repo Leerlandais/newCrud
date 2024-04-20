@@ -13,14 +13,14 @@
               if(isset($_SESSION["level"]) && $_SESSION["level"] !== 0) {
           ?>
         <li class="nav-item">
-          <a class="nav-link" href="?p=read">Read Articles</a>
+          <a class="nav-link" href="?p=read">Lire les Articles</a>
         </li>
         <?php } ?>
         <li class="nav-item">
           <?php 
               if(isset($_SESSION["level"]) && $_SESSION["level"] > 1) {
           ?>
-          <a class="nav-link" href="?p=add_art">Add Articles</a>
+          <a class="nav-link" href="?p=add_art">Ajouter un Article</a>
         </li>
         <?php
         }
@@ -29,7 +29,7 @@
           <?php 
               if(isset($_SESSION["level"]) && $_SESSION["level"] > 2) {
           ?>
-          <a class="nav-link" href="?p=cont_arts">Control Articles</a>
+          <a class="nav-link" href="?p=cont_arts">Contrôler les Articles</a>
         </li>
         <?php
         }
@@ -38,11 +38,14 @@
           <?php 
               if(isset($_SESSION["level"]) && $_SESSION["level"] > 7) {
           ?>
-          <a class="nav-link" href="?p=cont_user" aria-disabled="true">Control Users</a>
+          <a class="nav-link" href="?p=cont_user" aria-disabled="true">Contrôler les Utilisateurs</a>
         </li>
         <?php
         }
         ?>
+        <li class="nav-item">
+          <a class="nav-link" href="?p=carte">Voir La Carte</a>
+        </li>        
         <li class="nav-item">
           <?php 
           
