@@ -1,5 +1,5 @@
 <?php
-    if (!isset($_SESSION["level"]) || $_SESSION["level"] < 8) {
+    if (!isset($_SESSION["level"]) || $_SESSION["level"] < 7) {
         header ("Location: ?p=refuse");
         exit();
     }
@@ -27,6 +27,7 @@
             <ul class="list-group d-flex flex-column align-items-center">
                 <?php
                 foreach($getUse AS $user) {
+                    if ($user["lvl"] < 8) {
                     ?>
                     <form action="" method="POST">
                         <li class="list-group-item w-25 bg-transparent border-0">
@@ -37,7 +38,7 @@
                         </span>
                         <input type="hidden" name="id" value="<?=$user["id"]?>">
                         <?php
-                            if($user["lvl"] < 8) {
+                            if($user["lvl"] < 7) {
                         ?>
                         <button class="bg-transparent border-0" type="submit" name="userUp" ><img src="../public/images/arrow-up.svg" alt="arrow up"></button>
                         <?php
@@ -55,6 +56,7 @@
                 </li>
                         </form>
                         <?php
+                        }
                 }
                 ?>
             </ul>
