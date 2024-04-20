@@ -100,16 +100,7 @@ if(isset($_GET["p"])) {
             $createLogin = createNewUser($db, $_POST["createNameInp"], $_POST["createPassInp"]);
         }
         }
-/* Change to POST
 
-        if(isset($_GET["publish"]) || isset($_GET["unpublish"])) {
-            isset($_GET["publish"]) ? $changeThis = $_GET["publish"] : $changeThis = $_GET["unpublish"];
-            isset($_GET["publish"]) ? $changeVal = "+2" : $changeVal = "-2";
-                changeArticleStatus($db, $changeThis, $changeVal);
-                header("Refresh:0; ?p=cont_arts");
-        }
-        --------- THIS!! ---- CHECK IF YOU CAN $_POST THE NEW FORMS ON CONT_USER
-        */
 
 
 
@@ -131,10 +122,7 @@ if(isset($_POST["userDown"])) {
     changeUserStatusDown($db, $_POST["id"]);
     echo "<meta http-equiv='refresh' content='0'>";
 }
-/*
-    changeArticleStatusDown($db, $_POST["artID"]);
-    echo "<meta http-equiv='refresh' content='0'>";
-    changeArticleStatusUp($db, $_POST["art_ID"]);
-    echo "<meta http-equiv='refresh' content='0'>";
-   
-*/
+if(isset($_POST["art_title"], $_POST["art_cont"])) {
+    
+    addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["name"]);
+}

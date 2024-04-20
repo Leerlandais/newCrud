@@ -24,19 +24,32 @@
         echo ($_SESSION["name"]);
         ?>
         <p class="h1 mt-5">Ajouter un Article</p>
-        <?php
-            if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
-            {
-                echo "hi Boss";
-            }
         
-        ?>
         </div>
     </div>
+        
+            <form action="" method="POST">
+                <div class="form-group">
+                
+                <label for="art_title">Titre : </label>
+                <input type="text" class="form-control w-25 mb-3" name="art_title" id="artTitle" required>
+                <input type="hidden" name="art_slug" id="artSlug">
+            </div>
+            <div class="form-group">
+                
+                <label for="art_cont">Contenu : </label>
+                <textarea name="art_cont" cols="30" rows="5" class="form-control w-50" required></textarea>
+            </div>
+                
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+
+            </form>
+        
 </div>
 <?php
             include("inc/footer.php");
         ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="../public/scripts/addArt.script.js"></script>
 </body>
 </html>

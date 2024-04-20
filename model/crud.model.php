@@ -143,3 +143,26 @@ function changeUserStatusDown(PDO $db, $thisUser) {
     }
 }
 
+
+function addNewArticle(PDO $db, $title, $content, $slug, $name) {
+    $cleanedTitle = htmlspecialchars(strip_tags(trim($title)), ENT_QUOTES);
+    $cleanedCont = htmlspecialchars(strip_tags(trim($content)), ENT_QUOTES);
+    $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);
+
+    $sql = "INSERT INTO `articles`(`art_title`, `art_content`, `art_slug`, `art_author`, `art_status`) 
+            VALUES (:tit, :cont, :slug, :nom, 0)";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':tit', $cleanedTitle);
+    $stmt->bindParam(':cont', $cleanedCont);
+    $stmt->bindParam(':slug', $cleanedSlug);
+    $stmt->bindParam(':nom', $name);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Add Article";
+        return $errorMessage;
+    }
+}
