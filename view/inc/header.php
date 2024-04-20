@@ -36,7 +36,7 @@
         ?>
         <li class="nav-item">
           <?php 
-              if(isset($_SESSION["level"]) && $_SESSION["level"] > 7) {
+              if(isset($_SESSION["level"]) && $_SESSION["level"] > 6) {
           ?>
           <a class="nav-link" href="?p=cont_user" aria-disabled="true">Contrôler les Utilisateurs</a>
         </li>

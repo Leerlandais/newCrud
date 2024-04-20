@@ -24,7 +24,8 @@ function getAllArts(PDO $db, $status) {
             FROM `articles`
             LEFT JOIN `users`
             ON `users`.`user_id` = `articles`.`art_author`
-            WHERE `art_status` = ?";
+            WHERE `art_status` = ?
+            ORDER BY art_date DESC";
     
     $stmt = $db->prepare($sql);
     $stmt->bindValue(1, $cleanedStat);
@@ -57,6 +58,7 @@ function getUserLogin(PDO $db, $user, $pwd) {
         $_SESSION['monID'] = session_id();
         $_SESSION['name'] = $result["user_name"];
         $_SESSION["level"] = $result['user_lvl'];
+        $_SESSION["userID"] = $result["user_id"];
         return true;
     } else {
         $errorMessage = "Incorrect Password";
@@ -161,7 +163,7 @@ function changeUserStatusDown(PDO $db, $thisUser) {
 }
 
 function deleteUserFromDB(PDO $db, $delUser) {
-    if ($delUser === "1") {
+    if ($delUser === "1" || $delUser === "2") {
         echo "not a hope";
     }else {
     $sql = "DELETE FROM `users` 
@@ -180,6 +182,7 @@ function deleteUserFromDB(PDO $db, $delUser) {
 
 
 function addNewArticle(PDO $db, $title, $content, $slug, $name) {
+
     $cleanedTitle = htmlspecialchars(strip_tags(trim($title)), ENT_QUOTES);
     $cleanedCont = htmlspecialchars(strip_tags(trim($content)), ENT_QUOTES);
     $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);

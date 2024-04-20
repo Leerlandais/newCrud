@@ -19,6 +19,7 @@
                 <div class="col text-center">
                     <p class="h1 mt-5">J'ai décidé d'inclure une carte</p>
                     <p class="h3">Cliquez sur un nom d'utilisateur pour voir son emplacement préféré</p>
+                    <p class="h4 text-warning">&lpar;En cours de construction&rpar;</p>
                 </div>
             </div>
         </div>

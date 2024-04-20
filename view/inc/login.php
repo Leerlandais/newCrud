@@ -20,6 +20,5 @@
                 </div>
                 </div>
             </div>
-            <p>Login permis : manager, writer, reader, banish</p>
-            <p>PWD pour tout: 123</p>
+
             

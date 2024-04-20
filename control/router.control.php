@@ -137,6 +137,6 @@ if(isset($_POST["userDelete"])) {
 }
 
 if(isset($_POST["art_title"], $_POST["art_cont"])) {   
- $addedArt = addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["name"]);
+ $addedArt = addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["userID"]);
  echo "<meta http-equiv='refresh' content='0'>";
 }

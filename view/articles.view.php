@@ -17,10 +17,7 @@
         ?>
         <p class="h1 my-5">Les Articles</p>
         <?php
-            if(isset($_SESSION["level"]) && $_SESSION['level'] == 8)
-            {
-                echo "hi Boss";
-            }        
+   
         ?>
         </div>
     </div>
