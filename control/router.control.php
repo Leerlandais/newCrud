@@ -108,15 +108,17 @@ if(isset($_GET["p"])) {
                 changeArticleStatus($db, $changeThis, $changeVal);
                 header("Refresh:0; ?p=cont_arts");
         }
-        
-
-
-
-
---------- THIS BIT - CHECK IF YOU CAN $_POST THE NEW FORMS ON CONT_USER
-
-
-
+        --------- THIS!! ---- CHECK IF YOU CAN $_POST THE NEW FORMS ON CONT_USER
         */
 
 
+
+if(isset($_POST["unpublish"])) {
+    changeArticleStatusDown($db, $_POST["artID"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+if(isset($_POST["publish"])) {
+    changeArticleStatusUp($db, $_POST["art_ID"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+   
+}

@@ -37,11 +37,11 @@
             <div class="col border border-success-subtle px-5 d-flex flex-column align-items-center">
                 <p class="h3 mb-4">Articles Publié</p>
                 <?php
-                if (is_array($readableArts)) {
-                foreach ($readableArts as $arts) { ?>
-                <form action="./" method="POST">
+                if (is_array($readableArts)) {      /*  */
+                foreach ($readableArts as $arts) { ?> 
+                <form action="" method="POST">
                     <div class="col d-flex flex-row border border-1 border-primary-subtle rounded-5 px-2 py-1 mb-2">
-
+                        <input type="hidden" name="artID" value="<?=$arts["art_id"]?>"> 
                     <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
                     <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="unpublish">Masquer</button>
                     </div>
@@ -63,26 +63,42 @@
 
             if (is_array($controlArts)) {
                 foreach ($controlArts as $arts) { ?>
-                <form action="./" method="POST">
+                <form action="" method="POST">
                     <div class="row mb-4 d-flex flex-row border border-1 border-primary-subtle rounded-5 px-2 py-1">
-                        <div class="col px-2 py-1 mb-2">
-
-                            <p class="h4 font-weight-bold"><?=$arts["art_title"]?></p>
+                        <div class="col px-2 py-1">
+                        <input type="hidden" name="art_ID" value="<?=$arts["art_id"]?>"> 
+                           <a href="?p=cont_arts&show_art=<?=$arts["art_id"]?>" class="link-underline link-underline-opacity-0"><p class="h4 font-weight-bold m-0"><?=$arts["art_title"]?></p></a> 
                         <p class="text-muted ps-1"><?=$arts["art_content"] ?>
                         </p>
                         </div>
                         <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="publish">Publier</button>
-                        <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="abolish">Effacer</button>
+                    <!--    <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3" type="submit" name="abolish">Effacer</button>  -->
                         </div>
                         </form>
                         <?php
                 }
             }
+
+
             ?>
             </div>
+            <?php
+            if (isset($_GET["show_art"])) {
+                foreach ($controlArts as $arts) { 
+                    if ($_GET["show_art"] == $arts["art_id"]) {
+                ?>
+                <div class="row d-flex flex-column justify-content-center mt-4">
+                    <p class="h3"><?=$arts["art_title"]?></p>
+                    <p><?=$arts["art_content"]?></p>
+                </div>
+                <?php
+                }
+                }
+            }
+            ?>
         </div>
             </div>
-        </div>
+      
         <?php
             include("inc/footer.php");
         ?>

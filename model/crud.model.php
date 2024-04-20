@@ -136,13 +136,25 @@ function createNewUser(PDO $db, $name, $pwd) {
 
 
 
-function changeArticleStatus(PDO $db, $changeThis, $changeVal) {
-    $cleanedThis = htmlspecialchars(strip_tags(trim($changeThis)), ENT_QUOTES);
+function changeArticleStatusDown(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = `art_status` $changeVal WHERE art_id = ?";
+    $sql = "UPDATE `articles` SET `art_status` = `art_status` -2 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
+function changeArticleStatusUp(PDO $db, $changeThis) {
     
-    $stmt->bindValue(1, $cleanedThis);
+    $sql = "UPDATE `articles` SET `art_status` = `art_status` +2 WHERE art_id = $changeThis";
+    $stmt = $db->prepare($sql);
 
     try {
         $stmt->execute();
