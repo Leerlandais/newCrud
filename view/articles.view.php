@@ -8,7 +8,7 @@
     <title><?=$title?></title>
 </head>
 <body>
-    <div class="container mt-2 h-50">
+    <div class="container mt-2 h-auto">
         <div class="row">
             <div class="col text-center">
         <?php
@@ -26,18 +26,20 @@
     </div>
 
     <div class="row gx-5 mt-5 me-5">
-        <div class="col mb-4 d-flex flex-row">
+  
             <div class="col d-flex flex-column">
             <?php
             if (is_array($readableArts)) {
                 foreach ($readableArts as $arts) { ?>
+                <div class="col-8 border-bottom my-1">
                       <a href="?p=read&show_art=<?=$arts["art_id"]?>" class="link-underline link-secondary">
-                      <h4><strong><?=$arts["art_title"]?></strong></h4>
+                      <p class="h6"><?=$arts["art_title"]?></p>
                       </a>
-                      <p class="ps-3 m-0">
-                        <?=$arts["small_cont"] ?>...
-                      </p>
-                      <p class="h6 text-primary d-flex align-self-end"><small><?=$arts["art_date"]?></p></small>
+                      <div class="col d-flex flex-row justify-content-around">
+                      <p class="h6 text-secondary d-flex"><?=$arts["nom"]?></p>
+                      <p class="text-primary d-flex align-self-end"><small><?=$arts["art_date"]?></small></p>
+                      </div>
+                </div>
                       <?php
                 }
             }else {
@@ -67,7 +69,7 @@
         <?php
         }
         ?>
-</div>
+
 </div>
 </div>
 <?php

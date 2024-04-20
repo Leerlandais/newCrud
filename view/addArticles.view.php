@@ -44,7 +44,13 @@
                 <button type="submit" class="btn btn-primary mt-2">Envoyer</button>
 
             </form>
+        <?php
         
+        if(isset($_SESSION["artAdded"]) && $_SESSION["artAdded"] === true) {
+            include("inc/artadded.php");
+            $_SESSION["artAdded"] = false;
+        }
+        ?>
 </div>
 <?php
             include("inc/footer.php");

@@ -20,8 +20,10 @@ function getUsers(PDO $db) {
 
 function getAllArts(PDO $db, $status) {
     $cleanedStat = htmlspecialchars(strip_tags(trim($status)), ENT_QUOTES);
-    $sql = "SELECT  SUBSTRING(art_content, 1, 40) AS small_cont, art_content, art_id, art_title, art_slug, art_date, art_author, art_status
+    $sql = "SELECT  SUBSTRING(art_content, 1, 40) AS small_cont, art_content, art_id, art_title, art_slug, art_date, users.user_name AS nom, art_status
             FROM `articles`
+            LEFT JOIN `users`
+            ON `users`.`user_id` = `articles`.`art_author`
             WHERE `art_status` = ?";
     
     $stmt = $db->prepare($sql);
@@ -85,7 +87,7 @@ function createNewUser(PDO $db, $name, $pwd) {
 
 function changeArticleStatusDown(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = `art_status` -2 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles` SET `art_status` = 0 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -100,7 +102,22 @@ function changeArticleStatusDown(PDO $db, $changeThis) {
 
 function changeArticleStatusUp(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = `art_status` +2 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles` SET `art_status` = 2 WHERE art_id = $changeThis";
+    $stmt = $db->prepare($sql);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
+function changeArticleStatusDelete(PDO $db, $changeThis) {
+    
+    $sql = "UPDATE `articles` SET `art_status` = 8 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -177,6 +194,7 @@ function addNewArticle(PDO $db, $title, $content, $slug, $name) {
 
     try {
         $stmt->execute();
+        $_SESSION["artAdded"] = true;
         return true;
 
     }catch(Exception) {
@@ -184,3 +202,5 @@ function addNewArticle(PDO $db, $title, $content, $slug, $name) {
         return $errorMessage;
     }
 }
+
+

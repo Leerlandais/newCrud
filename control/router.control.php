@@ -53,7 +53,11 @@ if(isset($_GET["p"])) {
                                         case "banish" : 
                                             $title = "Go Away";
                                             include("../view/banish.view.php");
-                                            break;                                                                                                                              
+                                            break;  
+                                            case "carte" : 
+                                                $title = "Playing With Map and Locations";
+                                                include("../view/carte.view.php");
+                                                break;                                                                                                                                                                         
                                 default :
                                 $title = "Page Not Found";
                                 include("../view/error404.view.php");
@@ -112,6 +116,10 @@ if(isset($_POST["publish"])) {
     changeArticleStatusUp($db, $_POST["art_ID"]);
     echo "<meta http-equiv='refresh' content='0'>";   
 }
+if(isset($_POST["abolish"])) {
+    changeArticleStatusDelete($db, $_POST["art_ID"]);
+    echo "<meta http-equiv='refresh' content='0'>";   
+}
 
 if(isset($_POST["userUp"])) {
     changeUserStatusUp($db, $_POST["id"]);
@@ -128,7 +136,7 @@ if(isset($_POST["userDelete"])) {
     echo "<meta http-equiv='refresh' content='0'>";
 }
 
-if(isset($_POST["art_title"], $_POST["art_cont"])) {
-    
-    addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["name"]);
+if(isset($_POST["art_title"], $_POST["art_cont"])) {   
+ $addedArt = addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["name"]);
+ echo "<meta http-equiv='refresh' content='0'>";
 }
