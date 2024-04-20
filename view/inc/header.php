@@ -5,9 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="?p=home">Accueil</a>
-        </li>
+
 
           <?php 
               if(isset($_SESSION["level"]) && $_SESSION["level"] !== 0) {
@@ -43,6 +41,7 @@
         <?php
         }
         ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="?p=carte">Voir La Carte</a>
         </li>        

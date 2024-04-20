@@ -1,4 +1,8 @@
 const message = document.getElementById("message");
+const markerHop = document.querySelectorAll("markerHop")
+const URL_SearchParams = new URLSearchParams(window.location.search);
+searchLat = URL_SearchParams.get("lat");
+searchLong = URL_SearchParams.get("long");
 
 const map = L.map('mapCard').setView([51.505, -0.09], 13);
 
@@ -8,15 +12,18 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
+for (let i = 0; i = markerHop.length; i++) {
+    markerHop[i].addEventListener('click', function (){
+        map.flyTo([searchLat,searchLong],7);
+    });
+}
+
 const liste = {
-    /*
-    "Studios Abbey Road" : {"lat":51.531988,"lng":-0.178226},
-    "Palais de Buckingham" : {"lat":51.500835,"lng":-0.143004},
-    "Trafalgar Square" : {"lat":51.508037,"lng":-0.128049},
-    "British Museum" : {"lat":51.519294,"lng":-0.128018},
-    "Test" : {"lat":48.519294,"lng":-0.128018}
-    */
+// HERE YOU NEED TO DO SOME JSON AND GET THE MARKER FOR EACH USER
+    "House" :{"lat":searchLat,"lng":searchLong}
 };
+
+
 
 const markers = L.markerClusterGroup();
 

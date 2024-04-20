@@ -18,7 +18,7 @@
     <body>
         <div class="container mt-2 h-50">
         <?php
-            include("inc/header.php")
+            include("inc/header.php");
         ?>
             <div class="row">
                 <div class="col text-center">
@@ -34,7 +34,8 @@
                             <?php
                                 foreach($mapMarkers as $mark) {
                             ?>
-                                <li class="list-group-item"><?=$mark["map_name"]?></li>
+                                <a href="?p=carte&lat=<?=$mark["map_lat"]?>&long=<?=$mark["map_long"]?>" class="markerHop link-underline link-underline-opacity-0"><li class="list-group-item border-0 bg-transparent fst-italic"><?=$mark["map_name"]?></li></a>
+                                
                             <?php
                             }
                             ?>
@@ -44,7 +45,7 @@
                     <div id="mapCard"></div>
                 </div>
                 <div class="col">
-
+                            <p>Add test for user had map marker and invite them to add one if no</p>
                 </div>
             </div>
         </div>
@@ -52,10 +53,11 @@
             include("inc/footer.php");
         ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin="">
+
 </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
             <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 <script src="../public/scripts/map.script.js"></script>
 </body>
