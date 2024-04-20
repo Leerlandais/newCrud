@@ -41,7 +41,7 @@
                 <textarea name="art_cont" cols="30" rows="5" class="form-control w-50" required></textarea>
             </div>
                 
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="submit" class="btn btn-primary mt-2">Envoyer</button>
 
             </form>
         

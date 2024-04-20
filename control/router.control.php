@@ -122,6 +122,12 @@ if(isset($_POST["userDown"])) {
     changeUserStatusDown($db, $_POST["id"]);
     echo "<meta http-equiv='refresh' content='0'>";
 }
+
+if(isset($_POST["userDelete"])) {
+    deleteUserFromDB($db, $_POST["id"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+
 if(isset($_POST["art_title"], $_POST["art_cont"])) {
     
     addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["name"]);

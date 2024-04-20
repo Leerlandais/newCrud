@@ -50,6 +50,7 @@
                         <?php
                             }
                         ?>
+                        <button class="bg-danger border-0" type="submit" name="userDelete" ><img src="../public/images/x.svg" alt="x button"></button>
                     </div>
                 </li>
                         </form>

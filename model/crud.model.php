@@ -20,7 +20,7 @@ function getUsers(PDO $db) {
 
 function getAllArts(PDO $db, $status) {
     $cleanedStat = htmlspecialchars(strip_tags(trim($status)), ENT_QUOTES);
-    $sql = "SELECT * 
+    $sql = "SELECT  SUBSTRING(art_content, 1, 40) AS small_cont, art_content, art_id, art_title, art_slug, art_date, art_author, art_status
             FROM `articles`
             WHERE `art_status` = ?";
     
@@ -141,6 +141,24 @@ function changeUserStatusDown(PDO $db, $thisUser) {
         $errorMessage = "Couldn't Update Article Status";
         return $errorMessage;
     }
+}
+
+function deleteUserFromDB(PDO $db, $delUser) {
+    if ($delUser === "1") {
+        echo "not a hope";
+    }else {
+    $sql = "DELETE FROM `users` 
+            WHERE `user_id` = $delUser";
+    $delete = $db->prepare($sql);
+    try {
+        $delete->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Delete User";
+        return $errorMessage;
+    }
+}
 }
 
 
