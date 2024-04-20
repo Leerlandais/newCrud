@@ -119,6 +119,22 @@ if(isset($_POST["unpublish"])) {
 }
 if(isset($_POST["publish"])) {
     changeArticleStatusUp($db, $_POST["art_ID"]);
+    echo "<meta http-equiv='refresh' content='0'>";   
+}
+
+if(isset($_POST["userUp"])) {
+    changeUserStatusUp($db, $_POST["id"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+
+if(isset($_POST["userDown"])) {
+    changeUserStatusDown($db, $_POST["id"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+/*
+    changeArticleStatusDown($db, $_POST["artID"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+    changeArticleStatusUp($db, $_POST["art_ID"]);
     echo "<meta http-equiv='refresh' content='0'>";
    
-}
+*/

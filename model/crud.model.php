@@ -2,7 +2,7 @@
 
 function getUsers(PDO $db) {
     
-    $sql = "SELECT user_name AS nom
+    $sql = "SELECT user_name AS nom, user_lvl AS lvl, user_id AS id
             FROM users
             ORDER BY user_lvl DESC";
     
@@ -17,54 +17,7 @@ function getUsers(PDO $db) {
     }
 
 }
-/*
-function getUserLogin (PDO $db, $user) {
-    $cleanedUser = htmlspecialchars(strip_tags(trim($user)), ENT_QUOTES);
 
-    $sql = "SELECT * from `users`
-            WHERE `user_name` = '$cleanedUser'";
-
-            try {
-                $query = $db->query($sql);
-                $result = $query->fetch();
-                return $result;
-            } catch (Exception) {
-                $errorMessage = "Sorry, couldn't get users (login check)";
-                return $errorMessage;
-    }
-}
-
-function checkUserLogin ($user, $pwd) {
-    $cleanedPWD = htmlspecialchars(strip_tags(trim($pwd)), ENT_QUOTES);
-        if ($user["user_pwd"] === $cleanedPWD) {
-            $_SESSION['monID'] = session_id();
-            $_SESSION['name'] = $user["user_name"];
-            $_SESSION["level"] = $user['user_lvl'];
-            return true;
-        }
-    
-}
-
-*/
-/*
-function getAllArts(PDO $db, $status) {
-        
-    $sql = "SELECT * 
-            FROM `articles`
-            WHERE `art_status` = $status";
-    
-    try{
-        $query = $db->query($sql);
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        $query->closeCursor();
-        return $result;
-    }catch(Exception) {
-        $errorMessage = "Sorry, couldn't get articles";
-        return $errorMessage;
-    }
-
-}
-*/
 function getAllArts(PDO $db, $status) {
     $cleanedStat = htmlspecialchars(strip_tags(trim($status)), ENT_QUOTES);
     $sql = "SELECT * 
@@ -165,3 +118,34 @@ function changeArticleStatusUp(PDO $db, $changeThis) {
         return $errorMessage;
     }
 }
+
+function changeUserStatusUp(PDO $db, $thisUser) {
+    
+    $sql = "UPDATE `users` SET `user_lvl` = `user_lvl` +1 WHERE user_id = $thisUser";
+    $stmt = $db->prepare($sql);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
+function changeUserStatusDown(PDO $db, $thisUser) {
+    
+    $sql = "UPDATE `users` SET `user_lvl` = `user_lvl` -1 WHERE user_id = $thisUser";
+    $stmt = $db->prepare($sql);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
