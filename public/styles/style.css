@@ -7,7 +7,6 @@ background-repeat: repeat-x;
 height: 150vh;
 }
 
-.littleImg {
-    width: 25px;
-    height: 25px;
+#mapCard {
+    height: 500px;
 }

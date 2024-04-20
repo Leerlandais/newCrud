@@ -1,6 +1,7 @@
 <?php
 
 $getUse = getUsers($db);
+$mapMarkers = getMapMarkers($db);
 
 if(isset($_GET["p"]) && $_GET["p"] === "read") {
     $status = 2;
