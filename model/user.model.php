@@ -37,6 +37,7 @@ function getUserLogin(PDO $db, $user, $pwd) {
         $_SESSION['name'] = $result["user_name"];
         $_SESSION["level"] = $result['user_lvl'];
         $_SESSION["userID"] = $result["user_id"];
+        $_SESSION['log'][] = $_SERVER['REMOTE_ADDR']. " | ". date("Y-m-d H:i:s") . " | ". __FILE__."\n";
         return true;
     } else {
         $errorMessage = "Incorrect Password";
