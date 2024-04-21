@@ -148,3 +148,8 @@ if(isset($_POST["map_lat"], $_POST["map_lon"], $_POST["map_name"])) {
     echo "<meta http-equiv='refresh' content='0'>";
 }
 
+if(isset($_POST["map_lat_new"], $_POST["map_lon_new"], $_POST["map_name_new"])) {
+    updateMapMarkerForUser($db, $_POST["map_lat_new"], $_POST["map_lon_new"], $_POST["map_name_new"], $_SESSION["userID"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+

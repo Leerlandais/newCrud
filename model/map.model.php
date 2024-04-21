@@ -53,3 +53,33 @@ function addMapMarkerForUser (PDO $markMap, $lat, $lon, $name, $id) {
         return $errorMessage;
     }
 }
+
+
+function updateMapMarkerForUser (PDO $updateMap, $lat, $lon, $name, $id) {
+    $cleanedLat = htmlspecialchars(strip_tags(trim($lat)), ENT_QUOTES);
+    $cleanedLon = htmlspecialchars(strip_tags(trim($lon)), ENT_QUOTES);
+    $cleanedName = htmlspecialchars(strip_tags(trim($name)), ENT_QUOTES);
+
+    $sqlUpdate = "UPDATE `map` 
+                  SET `map_lat`= ?,`map_long`= ?,`map_name`= ? 
+                  WHERE `map_user` = ?";
+
+    $stmtUpdate = $updateMap->prepare($sqlUpdate);
+    $stmtUpdate->bindValue(1, $cleanedLat);
+    $stmtUpdate->bindValue(2, $cleanedLon);
+    $stmtUpdate->bindValue(3, $cleanedName);
+    $stmtUpdate->bindValue(4, $id);
+
+    try {
+
+        $stmtUpdate->execute();
+        $updateMap->commit();
+        return true;
+
+    } catch (Exception) {
+
+        $errorMessage = "Sorry, couldn't change your marker";
+        return $errorMessage;
+    }
+
+}
