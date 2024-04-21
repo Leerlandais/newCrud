@@ -9,8 +9,8 @@ try {
     die($errorMessage = "Problem connecting to the DB");
 }
 
-$result = json_encode(getMapMarkersForJson($db));
-return $result;
+json_encode(getMapMarkersForJson($db));
+
 
 
 function getMapMarkersForJson(PDO $map) : array | string {
