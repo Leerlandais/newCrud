@@ -23,7 +23,6 @@ function getAllArts(PDO $db, $status) {
 
 }
 
-
 function changeArticleStatusDown(PDO $db, $changeThis) {
     
     $sql = "UPDATE `articles` SET `art_status` = 0 WHERE art_id = $changeThis";
@@ -65,6 +64,21 @@ function changeArticleStatusDelete(PDO $db, $changeThis) {
 
     }catch(Exception) {
         $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
+function deleteArticleForever(PDO $db, $artID) {
+    $sql = "DELETE FROM `articles`
+            WHERE `art_id` = $artID";
+
+    $stmt = $db->prepare($sql);
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Delete Article";
         return $errorMessage;
     }
 }
