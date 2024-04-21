@@ -21,6 +21,8 @@
         <?php
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
+     
+        var_dump($_SESSION["log"]);
         ?>
         <p class="h1 mt-5">Control Utilisateurs</p>
             <p class="h3">Voici une liste de tous les utilisateurs actuels et leurs statuts</p>

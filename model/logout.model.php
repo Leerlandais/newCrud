@@ -1,6 +1,8 @@
 <?php
 
-
+$json = json_encode($_SESSION);
+$name = date("ymdHis").'.txt';
+file_put_contents($name, $json);
 // Détruit toutes les variables de session
 $_SESSION = array();
 
