@@ -3,6 +3,7 @@
         header ("Location: ?p=refuse");
         exit();
     }
+    if(isset($_SESSION['log'])) $_SESSION['log'][] = $_SERVER['REMOTE_ADDR']. " | ". date("Y-m-d H:i:s") . " | ". __FILE__."\n";
     ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
            if (isset($errorMessage)) : echo $errorMessage; endif;
         include("inc/header.php");
      
-        var_dump($_SESSION["log"]);
+
         ?>
         <p class="h1 mt-5">Control Utilisateurs</p>
             <p class="h3">Voici une liste de tous les utilisateurs actuels et leurs statuts</p>
