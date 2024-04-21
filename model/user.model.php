@@ -28,7 +28,7 @@ function getUserLogin(PDO $db, $user, $pwd) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$result) {
-        $errorMessage = "Sorry, couldn't find that user";
+        $errorMessage = "Please enter your details correctly";
         return $errorMessage;
     }
 
