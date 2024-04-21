@@ -11,8 +11,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
+var responseClone; // 1
+fetch("../control/json.control.php")
+.then(function (response) {
+    responseClone = response.clone(); // 2
+    return response.json();
+})
+.then(function (data) {
+    // Do something with data
+}, function (rejectionReason) { // 3
+    console.log('Error parsing JSON from response:', rejectionReason, responseClone); // 4
+    responseClone.text() // 5
+    .then(function (bodyText) {
+        console.log('Received the following instead of valid JSON:', bodyText); // 6
+    });
+});
+/*
+
 fetch("../control/json.control.php")
     .then(function(response){
+        
         response.json().then(function(data){
             console.log(data);
            afficheMarqueurs(data);
