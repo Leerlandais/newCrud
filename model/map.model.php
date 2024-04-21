@@ -16,3 +16,40 @@ $sql = "SELECT *
         return $errorMessage;
     }
 }
+
+
+function addMapMarkerForUser (PDO $markMap, $lat, $lon, $name, $id) {
+    
+    $cleanedLat = htmlspecialchars(strip_tags(trim($lat)), ENT_QUOTES);
+    $cleanedLon = htmlspecialchars(strip_tags(trim($lon)), ENT_QUOTES);
+    $cleanedName = htmlspecialchars(strip_tags(trim($name)), ENT_QUOTES);
+    
+    $sqlMark = "INSERT INTO `map`(`map_user`, `map_lat`, `map_long`, `map_name`) 
+                VALUES (?,?,?,?)";
+    
+    $stmtMark = $markMap->prepare($sqlMark);
+    $stmtMark->bindValue(1, $id);
+    $stmtMark->bindValue(2, $cleanedLat);
+    $stmtMark->bindValue(3, $cleanedLon);
+    $stmtMark->bindValue(4, $cleanedName);
+
+    $sqlUser = "UPDATE `users` 
+                SET `user_marker`='1' 
+                WHERE `user_id` = ?";
+
+    $stmtUser = $markMap->prepare($sqlUser);
+    $stmtUser->bindValue(1, $id);
+
+    try {
+
+        $stmtUser->execute();
+        $stmtMark->execute();
+        $markMap->commit();
+        return true;
+
+    } catch (Exception) {
+
+        $errorMessage = "Sorry, couldn't add your marker";
+        return $errorMessage;
+    }
+}

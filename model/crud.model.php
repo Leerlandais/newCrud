@@ -2,7 +2,7 @@
 
 function getUsers(PDO $db) {
     
-    $sql = "SELECT user_name AS nom, user_lvl AS lvl, user_id AS id
+    $sql = "SELECT user_name AS nom, user_lvl AS lvl, user_id AS id, user_marker AS mark
             FROM users
             ORDER BY user_name ASC";
     

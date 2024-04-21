@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-2">
                         <ul class="list-group">
                             <?php
                                 foreach($mapMarkers as $mark) {
@@ -41,11 +41,31 @@
                             ?>
                         </ul>
                 </div>
-                <div class="col">
-                    <div id="mapCard"></div>
+           
+                    <div id="mapCard" class="col-8"></div>
+                <div class="col-2">
+                    <?php
+                        foreach($getUse as $use) {
+                            if ($use["mark"] === 0 && $use["nom"] === $_SESSION["name"]) {
+                                ?>
+                                <p><span class="text-danger fst-italic"><?=$_SESSION["name"]?></span>, vous n'avez pas encore ajouté de marqueur de carte. Entrez la latitude et la longitude ici pour en ajouter une</p>
+                                    <form action="" method="POST">
+                                    <div class="form-group">
+                                    <label for="map_name">Nom de Marqueur : </label>
+                                    <input type="text" class="form-control w-100 mb-3" name="map_name" id="mapName" required>
+                                    <label for="map_lat">Latitude : </label>
+                                    <input type="number" step="0.00001" class="form-control w-100 mb-3" name="map_lat" id="mapLat" required>
+                                    <label for="map_lat">Longitude : </label>
+                                    <input type="number" step="0.00001" class="form-control w-100 mb-3" name="map_lon" id="mapLon" required>
+                                    <button type="submit" class="btn btn-primary mt-2">Ajouter</button>
+                                    
+            </div>                                
+                                <?php
+                            }
+                        }
+                    ?>
+                          
                 </div>
-                <div class="col">
-                            <p>Add test for user had map marker and invite them to add one if no</p>
                 </div>
             </div>
         </div>
