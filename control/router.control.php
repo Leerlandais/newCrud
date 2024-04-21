@@ -1,6 +1,8 @@
 <?php
 
 $getUse = getUsers($db);
+$mapMarkers = getMapMarkers($db);
+
 
 if(isset($_GET["p"]) && $_GET["p"] === "read") {
     $status = 2;
@@ -140,3 +142,9 @@ if(isset($_POST["art_title"], $_POST["art_cont"])) {
  $addedArt = addNewArticle($db, $_POST["art_title"], $_POST["art_cont"], $_POST["art_slug"], $_SESSION["userID"]);
  echo "<meta http-equiv='refresh' content='0'>";
 }
+
+if(isset($_POST["map_lat"], $_POST["map_lon"], $_POST["map_name"])) {
+    addMapMarkerForUser($db, $_POST["map_lat"], $_POST["map_lon"], $_POST["map_name"], $_SESSION["userID"]);
+    echo "<meta http-equiv='refresh' content='0'>";
+}
+

@@ -2,13 +2,13 @@
 
 function getUsers(PDO $db) {
     
-    $sql = "SELECT user_name AS nom, user_lvl AS lvl, user_id AS id
+    $sql = "SELECT user_name AS nom, user_lvl AS lvl, user_id AS id, user_marker AS mark
             FROM users
-            ORDER BY user_lvl DESC";
+            ORDER BY user_name ASC";
     
     try{
         $query = $db->query($sql);
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
         $query->closeCursor();
         return $result;
     }catch(Exception) {
@@ -31,7 +31,7 @@ function getAllArts(PDO $db, $status) {
     $stmt->bindValue(1, $cleanedStat);
     try{
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll();
         
         return $result;
     }catch(Exception) {
