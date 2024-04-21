@@ -1,5 +1,7 @@
 <?php
 
+
+
 function getMapMarkers(PDO $map) : array | string {
 $sql = "SELECT * 
         FROM `map`
