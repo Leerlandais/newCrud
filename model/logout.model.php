@@ -22,6 +22,7 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // redirection vers l'accueil
+  
 header("Location: ?p=home");
 exit();
 ?>

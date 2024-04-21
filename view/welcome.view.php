@@ -23,6 +23,10 @@
                 <div class="col text-center">
                     <p class="h1 mt-5">Bienvenue <?=$_SESSION["name"]?></p>
                     <p class="h3">Amusez-vous bien</p>
+                    <?php
+
+include("inc/intro.php");
+?>
                 </div>
             </div>
         </div>

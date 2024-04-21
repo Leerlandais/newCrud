@@ -8,7 +8,7 @@
         <title><?=$title?></title>
     </head>
     <body>
-    <div class="container mt-2 d-flex flex-column align-items-center h-50">
+    <div class="container mt-2 d-flex flex-column align-items-center h-auto">
         <div class="row">
             <div class="col text-center">
                 <p class="h1 mt-5">Bienvenue dans ma nouvelle expérience CRUD et Bootstrap<p>
@@ -19,6 +19,10 @@
         ?>
                 <p class="h3">Connectez-vous pour continuer</p>
                 <p class="h5">ou cliquez <a href="?p=read">ici</a> pour lire les articles</p>
+                <?php
+
+include("inc/intro.php");
+?>
                 <?php } 
                 
                 if (isset($_GET["p"]) && $_GET["p"] === "make_login") {
@@ -28,13 +32,15 @@
             {
                 include("inc/login.php");
             }
-  
             ?>
             </div>    
         </div>
     </div>
-    
+    <!--                                                        WHY DOES ADDING THIS OR THE INC/HEADER.PHP VERSION MAKE THE HEADER GO NUTS?????????????
+
+        -->
     <?php
+
             include("inc/footer.php");
         ?>
     

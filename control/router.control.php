@@ -18,6 +18,25 @@ if(isset($_GET["p"]) && $_GET["p"] === "cont_arts") {
         $deleteArts = getAllArts($db, $status);       
 }
 
+if(isset($_POST["userNameInp"], $_POST["userPassInp"])) {
+    if($_POST["userNameInp"] == "" || $_POST["userPassInp"] == "") {
+        echo "Saisissez correctement vos coordonnées!";
+        return;
+
+    }
+  $userLogin = getUserLogin($db, $_POST["userNameInp"], $_POST["userPassInp"]);
+  if (!is_bool($userLogin)) {
+    echo $userLogin;
+  }else if ($_SESSION["level"] === 0) {
+    header ("Location: ?p=banish");
+    die();
+  }else {
+    header ("Location: ?p=welcome");
+  }
+  
+//       checkUserLogin($userLogin, $_POST["userPassInp"]);
+  
+}
 
 if(isset($_GET["p"])) {
     
@@ -77,25 +96,7 @@ if(isset($_GET["p"])) {
                         } 
         
         
-        if(isset($_POST["userNameInp"], $_POST["userPassInp"])) {
-            if($_POST["userNameInp"] == "" || $_POST["userPassInp"] == "") {
-                echo "Saisissez correctement vos coordonnées!";
-                return;
 
-            }
-          $userLogin = getUserLogin($db, $_POST["userNameInp"], $_POST["userPassInp"]);
-          if (!is_bool($userLogin)) {
-            echo $userLogin;
-          }else if ($_SESSION["level"] === 0) {
-            header ("Location: ?p=banish");
-            die();
-          }else {
-            header ("Location: ?p=welcome");
-          }
-          
-   //       checkUserLogin($userLogin, $_POST["userPassInp"]);
-          
-        }
 
         if(isset($_POST["createNameInp"], $_POST["createPassInp"], $_POST["createPassInpCheck"])) {
             if($_POST["createNameInp"] == "" || $_POST["createPassInp"] == "" || $_POST["createPassInpCheck"] == "") {

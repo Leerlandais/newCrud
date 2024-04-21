@@ -13,6 +13,9 @@
         <li class="nav-item">
           <a class="nav-link" href="?p=read">Lire les Articles</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="?p=carte">Voir La Carte</a>
+        </li> 
         <?php } ?>
         <li class="nav-item">
           <?php 
@@ -41,10 +44,7 @@
         <?php
         }
         ?>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="?p=carte">Voir La Carte</a>
-        </li>        
+               
         <li class="nav-item">
           <?php 
           
