@@ -25,8 +25,10 @@
                     <p class="h1 mt-5">J'ai décidé d'inclure une carte</p>
                     <p class="h3">Cliquez sur un nom d'utilisateur pour voir son emplacement préféré</p>
                     <p class="h4 text-warning">&lpar;Prochaine étape : Clusters&rpar;</p>
-                    <a href="?json" target="_blank">API</a> format JSON
-                    <p id="message"></p>
+                   <!-- <a href="?json" target="_blank">API</a> format JSON  -->
+                    <div id="liste">
+                        <?= json_encode(getMapMarkers($db)); ?>
+                    </div>
                 </div>
             </div>
             <div class="row">
