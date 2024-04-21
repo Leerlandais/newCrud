@@ -16,7 +16,7 @@
         <title><?=$title?></title>
     </head>
     <body>
-        <div class="container mt-2 h-50">
+        <div class="container mt-2 h-auto">
             <?php
             include("inc/header.php");
             ?>

@@ -15,7 +15,7 @@
     <title><?=$title?></title>
 </head>
 <body>
-    <div class="container mt-2 h-50">
+    <div class="container mt-2 h-auto">
         <div class="row">
             <div class="col text-center">
         <?php
@@ -91,7 +91,7 @@
                 }
             }
             if ($_SESSION["level"] === 8) {
-                if (is_array($deleteArts)) { ?>
+                if (!empty($deleteArts)) { ?>
                 <div class="row border border-danger rounded-5 mt-3">
                      <p class="h3 mb-4">Articles à Effacer</p>
                 <?php
