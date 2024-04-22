@@ -68,6 +68,21 @@ function changeArticleStatusDelete(PDO $db, $changeThis) {
     }
 }
 
+function changeArticleStatusFlag(PDO $db, $changeThis) {
+    
+    $sql = "UPDATE `articles` SET `art_status` = 1 WHERE art_id = $changeThis";
+    $stmt = $db->prepare($sql);
+
+    try {
+        $stmt->execute();
+        return true;
+
+    }catch(Exception) {
+        $errorMessage = "Couldn't Update Article Status";
+        return $errorMessage;
+    }
+}
+
 function deleteArticleForever(PDO $db, $artID) {
     $sql = "DELETE FROM `articles`
             WHERE `art_id` = $artID";

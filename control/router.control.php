@@ -12,6 +12,8 @@ if(isset($_GET["p"]) && $_GET["p"] === "read") {
 if(isset($_GET["p"]) && $_GET["p"] === "cont_arts") {
     $status = 0;
         $controlArts = getAllArts($db, $status);
+    $status = 1;
+        $flaggedArts = getAllArts($db, $status);
     $status = 2;
         $readableArts = getAllArts($db, $status); 
     $status = 8;
@@ -127,6 +129,11 @@ if(isset($_POST["publish"])) {
 }
 if(isset($_POST["abolish"])) {
     changeArticleStatusDelete($db, $_POST["art_ID"]);
+    echo "<meta http-equiv='refresh' content='0'>";   
+}
+
+if(isset($_POST["flag"])) {
+    changeArticleStatusFlag($db, $_POST["art_ID"]);
     echo "<meta http-equiv='refresh' content='0'>";   
 }
 

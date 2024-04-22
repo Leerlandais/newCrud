@@ -68,6 +68,7 @@
                         </div>
                 
                         <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3 border-info" type="submit" name="publish">Publier</button>                
+                        <button class="badge bg-info text-dark btn-sm h-auto w-auto align-self-center ms-3 border-success" type="submit" name="flag">Flag</button>
                         <button class="badge bg-dark text-danger btn-sm h-auto w-auto align-self-center ms-3 border-warning" type="submit" name="abolish">Effacer</button>  
                         </div>
                         </form>
@@ -94,11 +95,11 @@
             if ($_SESSION["level"] === 8) {
                 if (!empty($deleteArts)) { ?>
                 <div class="row border border-danger rounded-5 mt-3">
-                     <p class="h3 mb-4">Articles à Effacer</p>
-                <?php
-                    foreach ($deleteArts as $arts) { ?>
+                    <div class="col">
+                     <p class="h3 mb-4">Articles à Effacer</p> <?php
+                     foreach ($deleteArts as $arts) { ?>
                     <form action="" method="POST" class="d-flex flex-row justify-content-center">
-                        <div class="row mb-4 d-flex flex-row border border-1 border-warning rounded-5 px-2 py-1 w-50">
+                        
                             <div class="col px-2 py-1">
                             <input type="hidden" name="del_ID" value="<?=$arts["art_id"]?>"> 
                                <a href="?p=cont_arts&show_art=<?=$arts["art_id"]?>" class="link-underline link-underline-opacity-0"><p class="h4 font-weight-bold m-0"><?=$arts["art_title"]?></p></a> 
@@ -108,12 +109,40 @@
                     
                             <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3 border-info" type="submit" name="republish">Re-Publier</button>                
                             <button class="badge bg-dark text-danger btn-sm h-auto w-auto align-self-center ms-3 border-warning" type="submit" name="deleteArt">Effacer</button>  
-                            </div>
+                           
                             </form>
                             <?php
-                    }
+                    } ?>
+                     </div>
+                <?php
+                    if (!empty($flaggedArts)) { ?>
+                        
+                            <div class="col">
+                             <p class="h3 mb-4">Flagged Articles</p> <?php
+                             foreach ($flaggedArts as $arts) { ?>
+                        <form action="" method="POST" class="d-flex flex-row justify-content-center">
+                           
+                                <div class="col px-2 py-1">
+                                <input type="hidden" name="del_ID" value="<?=$arts["art_id"]?>"> 
+                                   <a href="?p=cont_arts&show_art=<?=$arts["art_id"]?>" class="link-underline link-underline-opacity-0"><p class="h4 font-weight-bold m-0"><?=$arts["art_title"]?></p></a> 
+                                <p class="text-muted ps-1"><?=$arts["art_content"] ?>
+                                </p>
+                                </div>
+                        
+                                <button class="badge bg-success text-warning btn-sm h-auto w-auto align-self-center ms-3 border-info" type="submit" name="republish">Re-Publier</button>                
+                                <button class="badge bg-dark text-danger btn-sm h-auto w-auto align-self-center ms-3 border-warning" type="submit" name="deleteArt">Effacer</button>  
+                                
+                                </form>
+                                <?php
+                        }
                 }
                 ?>
+                             </div>
+                        <?php
+
+                    }
+                ?>
+
                 <?php
             }
             ?>
