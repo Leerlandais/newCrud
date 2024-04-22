@@ -107,6 +107,10 @@ if(isset($_GET["p"])) {
                 return;
             }else {
             $createLogin = createNewUser($db, $_POST["createNameInp"], $_POST["createPassInp"]);
+            if ($createLogin === true) {
+            getUserLogin($db, $_POST["createNameInp"], $_POST["createPassInp"]);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
         }
         }
 
