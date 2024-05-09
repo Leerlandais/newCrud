@@ -15,7 +15,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="?p=carte">Voir La Carte</a>
-        </li> 
+        </li>     
         <?php } ?>
         <li class="nav-item">
           <?php 
@@ -44,7 +44,8 @@
         <?php
         }
         ?>
-               
+        
+   
         <li class="nav-item">
           <?php 
           

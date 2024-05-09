@@ -104,7 +104,7 @@ function addNewArticle(PDO $db, $title, $content, $slug, $name) {
     $cleanedCont = htmlspecialchars(strip_tags(trim($content)), ENT_QUOTES);
     $cleanedSlug = htmlspecialchars(strip_tags(trim($slug)), ENT_QUOTES);
 
-    $sql = "INSERT INTO `articles`(`art_title`, `art_content`, `art_slug`, `art_author`, `art_status`) 
+    $sql = "INSERT INTO `articles_crud`(`art_title`, `art_content`, `art_slug`, `art_author`, `art_status`) 
             VALUES (:tit, :cont, :slug, :nom, 0)";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':tit', $cleanedTitle);
