@@ -35,7 +35,7 @@ function addMapMarkerForUser (PDO $markMap, $lat, $lon, $name, $id) {
     $stmtMark->bindValue(3, $cleanedLon);
     $stmtMark->bindValue(4, $cleanedName);
 
-    $sqlUser = "UPDATE `users` 
+    $sqlUser = "UPDATE `users_crud` 
                 SET `user_marker`='1' 
                 WHERE `user_id` = ?";
 
