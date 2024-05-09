@@ -21,7 +21,7 @@ function getMapMarkersForJson(PDO $map) : array | string {
             $query = $map->query($sql);
             $markers = $query->fetchAll();
             $query->closeCursor();
-            var_dump($markers);
+       //     var_dump($markers);
             return $markers;
         
         }catch(Exception) {
