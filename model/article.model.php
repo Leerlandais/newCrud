@@ -2,10 +2,10 @@
 
 function getAllArts(PDO $db, $status) {
     $cleanedStat = htmlspecialchars(strip_tags(trim($status)), ENT_QUOTES);
-    $sql = "SELECT  SUBSTRING(art_content, 1, 40) AS small_cont, art_content, art_id, art_title, art_slug, art_date, users.user_name AS nom, art_status
-            FROM `articles`
-            LEFT JOIN `users`
-            ON `users`.`user_id` = `articles`.`art_author`
+    $sql = "SELECT  SUBSTRING(art_content, 1, 40) AS small_cont, art_content, art_id, art_title, art_slug, art_date, users_crud.user_name AS nom, art_status
+            FROM `articles_crud`
+            LEFT JOIN `user_crud`
+            ON `user_crud`.`user_id` = `articles_crud`.`art_author`
             WHERE `art_status` = ?
             ORDER BY art_date DESC";
     
@@ -25,7 +25,7 @@ function getAllArts(PDO $db, $status) {
 
 function changeArticleStatusDown(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = 0 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles_crud` SET `art_status` = 0 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -40,7 +40,7 @@ function changeArticleStatusDown(PDO $db, $changeThis) {
 
 function changeArticleStatusUp(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = 2 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles_crud` SET `art_status` = 2 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -55,7 +55,7 @@ function changeArticleStatusUp(PDO $db, $changeThis) {
 
 function changeArticleStatusDelete(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = 8 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles_crud` SET `art_status` = 8 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -70,7 +70,7 @@ function changeArticleStatusDelete(PDO $db, $changeThis) {
 
 function changeArticleStatusFlag(PDO $db, $changeThis) {
     
-    $sql = "UPDATE `articles` SET `art_status` = 1 WHERE art_id = $changeThis";
+    $sql = "UPDATE `articles_crud` SET `art_status` = 1 WHERE art_id = $changeThis";
     $stmt = $db->prepare($sql);
 
     try {
@@ -84,7 +84,7 @@ function changeArticleStatusFlag(PDO $db, $changeThis) {
 }
 
 function deleteArticleForever(PDO $db, $artID) {
-    $sql = "DELETE FROM `articles`
+    $sql = "DELETE FROM `articles_crud`
             WHERE `art_id` = $artID";
 
     $stmt = $db->prepare($sql);
